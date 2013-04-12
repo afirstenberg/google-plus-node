@@ -1,37 +1,39 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script>
-    	clientStateToken = '<%= state %>';
-    </script>
-    <script src="/javascripts/client.js"></script>
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-		<div id="signinButton">
-			<span class="g-signin"
-				data-scope="<%= scope %>"
-				data-clientid="<%= clientId %>"
-				data-redirecturi="postmessage"
-				data-accesstype="offline"
-				data-cookiepolicy="single_host_origin"
-				data-approvalprompt="force"
-				data-callback="signInCallback">
-			</span>
-		</div>
-		<script type="text/javascript">
-			(function () {
-				var po = document.createElement('script');
-				po.type = 'text/javascript';
-				po.async = true;
-				po.src = 'https://plus.google.com/js/client:plusone.js?onload=start';
-				var s = document.getElementsByTagName('script')[0];
-				s.parentNode.insertBefore(po, s);
-			})();
-		</script>
-    </body>
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css'/>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>
+    clientStateToken = '<%= state %>';
+  </script>
+  <script src="/javascripts/client.js"></script>
+</head>
+<body>
+<h1><%= title %></h1>
+
+<p>Welcome to <%= title %></p>
+
+<div id="signinButton">
+  <span class="g-signin"
+        data-scope="<%= scope %>"
+        data-clientid="<%= clientId %>"
+        data-redirecturi="postmessage"
+        data-accesstype="offline"
+        data-cookiepolicy="single_host_origin"
+        data-approvalprompt="force"
+        data-callback="signInCallback">
+	</span>
+</div>
+<script type="text/javascript">
+  (function(){
+    var po = document.createElement( 'script' );
+    po.type = 'text/javascript';
+    po.async = true;
+    po.src = 'https://plus.google.com/js/client:plusone.js?onload=start';
+    var s = document.getElementsByTagName( 'script' )[0];
+    s.parentNode.insertBefore( po, s );
+  })();
+</script>
+</body>
 </html>
