@@ -8,7 +8,9 @@
       // Hide the sign-in button now that the user is authorized, for example:
       $('#signinButton').attr('style', 'display: none');
 
-      // Send the code to the server
+      /*
+       * Step 6: Send the authorization code to the server
+       */
       var data = {
         'code': auth['code'],
         'state': global.clientStateToken

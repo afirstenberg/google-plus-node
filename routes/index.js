@@ -8,6 +8,10 @@ var crypto = require('crypto')
   ;
 
 exports.index = function(req, res){
+
+  /*
+   * Step 2: Create an anti-request forgery state token
+   */
   var stateToken = crypto.randomBytes(48).toString('hex');
   var now = (new Date()).getTime();
   var data = {

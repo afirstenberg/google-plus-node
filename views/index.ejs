@@ -14,6 +14,10 @@
 
 <p>Welcome to <%= title %></p>
 
+<!--
+      Step 4: Add the sign-in button to your page
+      Step 5: Sign in the user (by calling signInCallback)
+  -->
 <div id="signinButton">
   <span class="g-signin"
         data-scope="<%= scope %>"
@@ -21,11 +25,13 @@
         data-redirecturi="postmessage"
         data-accesstype="offline"
         data-cookiepolicy="single_host_origin"
-        data-approvalprompt="force"
         data-callback="signInCallback">
 	</span>
 </div>
 <script type="text/javascript">
+  /*
+   * Step 3: Include the Google+ script on your page
+   */
   (function(){
     var po = document.createElement( 'script' );
     po.type = 'text/javascript';
