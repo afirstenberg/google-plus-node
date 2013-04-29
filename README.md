@@ -33,6 +33,10 @@ you can replace them inside the quotes in a command such as:
 
 > CLIENT\_ID="id" CLIENT\_SECRET="secret" node app.js
 
+Most of the output will be logged to either the node.js console or the
+browser's javascript console, and can be useful to understand what tokens
+are being received and how they are handled.
+
 
 ### Feedback and updates
 
