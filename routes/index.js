@@ -15,7 +15,6 @@ exports.index = function(req, res){
   var stateToken = crypto.randomBytes(48).toString('hex');
   var now = (new Date()).getTime();
   var data = {
-    'title':   'Express',
     'clientId': google.CLIENT_ID,
     'scope':    google.SCOPE,
     'state':    stateToken,

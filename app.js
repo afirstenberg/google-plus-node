@@ -5,7 +5,6 @@
 
 var express = require('express')
   , routes = require('./routes')
-  , user = require('./routes/user')
   , google = require('./routes/google')
   , http = require('http')
   , path = require('path');
@@ -33,7 +32,6 @@ app.configure('development', function(){
 });
 
 app.get('/', routes.index);
-app.get('/users', user.list);
 app.post('/google/auth', google.auth);
 
 google.CLIENT_ID = app.get('clientId');
