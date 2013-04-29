@@ -24,10 +24,12 @@ var googleapis = require('googleapis');
 
 var plusUsers = {};
 
-var plusClient;
-googleapis.load( 'plus', 'v1', function(err,client){
-  plusClient = client;
-});
+var client;
+googleapis
+  .discover( 'plus', 'v1' )
+  .execute( function(err,data){
+    client = data;
+  });
 
 var now = function(){
   return (new Date()).toISOString();
@@ -45,7 +47,9 @@ exports.auth = function( req, res ){
   var sessionStateToken = req.session['state'];
   var clientStateToken  = req.body['state'];
   console.log( 'csrf', sessionStateToken, clientStateToken );
-  if( !sessionStateToken || !clientStateToken || sessionStateToken !== clientStateToken ){
+  if( !sessionStateToken ||
+      !clientStateToken ||
+      sessionStateToken !== clientStateToken ){
     ret.err = {
       msg: 'state token does not match'
     };
@@ -57,11 +61,13 @@ exports.auth = function( req, res ){
    * Step 8: Start the Google+ service
    */
   // Exchange the code for a token and store it along with this oauth object
-  var oauth2 = new googleapis.OAuth2Client( exports.CLIENT_ID, exports.CLIENT_SECRET, REDIRECT_URL );
+  var oauth2 = new googleapis.OAuth2Client( exports.CLIENT_ID,
+                                            exports.CLIENT_SECRET,
+                                            REDIRECT_URL );
   oauth2.getToken( req.body.code, function(err, tokens){
     oauth2.credentials = tokens;
     console.log( now(), err, tokens );
-    plusClient.plus.people.get({
+    client.plus.people.get({
       userId: 'me'
     })
     .withAuthClient(oauth2)
@@ -82,7 +88,7 @@ exports.auth = function( req, res ){
 };
 
 var logUser = function( user ){
-  plusClient.plus.people.get({
+  client.plus.people.get({
     userId: 'me'
   } ).withAuthClient(user.auth).execute(function(err,result,res){
       console.log( '--', now(), 'start --' );
