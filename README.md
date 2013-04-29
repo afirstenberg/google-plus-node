@@ -21,7 +21,9 @@ Google APIs Console. From this console, you will need to generate a Client
 ID and Secret, which you will need to provide when running the app.
 
 All dependent npm packages are defined in package.json, so you should run
+
 > npm install
+
 to have the dependencies automatically downloaded and installed.
 
 
