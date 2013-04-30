@@ -11,7 +11,7 @@ mentioned in the files here correspond to the steps outlined there.
 This is considered best practice if you want the user to sign-in using the
 Google+ Sign-In button, but wish to be able to take actions on the user's
 behalf from the server, or after they are not active at your site. See the
-page at developers.google.com for furtehr details.
+page at http://developers.google.com/+/ for further details.
 
 
 ### Preparing to run
